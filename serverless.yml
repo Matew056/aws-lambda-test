@@ -22,7 +22,7 @@ functions:
           path: /
           method: get
   addTask:
-    handler: src/addTask
+    handler: src/addTask.addTask
     events:
       - httpApi:
           path: /tasks

@@ -12,11 +12,11 @@ const addTask = async(event) => {
         id,
         title,
         description,
-        createdAt,
+        createdAt
     }
 
     await dynamoDB.put({
-        TableName: 'TaskTable'
+        TableName: 'TaskTable',
         Item: newTask
     }).promise()
 
@@ -24,7 +24,6 @@ const addTask = async(event) => {
         statusCode: 200,
         body: JSON.stringify(newTask)
     }
-
 }
 
 module.exports = {
