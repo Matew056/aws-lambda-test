@@ -19,13 +19,13 @@ functions:
     handler: src/hello.hello
     events:
       - httpApi:
-          path: /
+          path: /hello.js
           method: get
   addTask:
     handler: src/addTask.addTask
     events:
       - httpApi:
-          path: /tasks
+          path: /addTask.js
           method: post
 
 resources: 
