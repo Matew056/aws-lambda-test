@@ -33,6 +33,12 @@ functions:
       - httpApi:
           path: /getTasks.js
           method: get
+  getTask:
+    handler: src/getTask.getTask
+    events:
+      - httpApi:
+          path: /getTask/{id}
+          method: get
 
 resources: 
   Resources:
