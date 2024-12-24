@@ -7,7 +7,7 @@ const getTask = async (event) => {
 
     const result = await dynamodb.get({
         TableName: 'TaskTable',
-        key : {
+        Key : {
             id
         }
     }).promise()
