@@ -8,6 +8,20 @@ const updateTask = async (event) => {
 
     const { done, title, description } = JSON.parse(event.body)
 
+    const data = JSON.parse(event.body);
+    // reemplazar esto por un array de atributos
+
+    if (!('done' in data) || 
+    !('title' in data) || 
+    !('description' in data)){
+        return {
+            statusCode: 400,
+            body: JSON.stringify({
+                message: "Faltan datos en la solicitud",
+            }),
+        };
+    }
+
     const updatedTask = await dynamodb.update({
         TableName: 'TaskTable',
         Key: {id},
@@ -21,17 +35,7 @@ const updateTask = async (event) => {
         ReturnValues: 'ALL_NEW'
     }).promise()
 
-    // reemplazar esto por un array de atributos
-    if (!('done' in JSON.parse(event.body)) || 
-    !('title' in JSON.parse(event.body)) || 
-    !('description' in JSON.parse(event.body))){
-        return {
-            statusCode: 400,
-            body: JSON.stringify({
-                message: "Faltan datos en la solicitud",
-            }),
-        };
-    }
+   
 
     return {
         status: 200,

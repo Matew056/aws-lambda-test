@@ -29,6 +29,17 @@ const addTask = async(event) => {
         Item: newTask
     }).promise()
 
+    //  EXTRA condicion 
+    if (!('title' in JSON.parse(event.body)) || !('description' in JSON.parse(event.body))){
+        return {
+            statusCode: 400,
+            body: JSON.stringify({
+                message: "Faltan datos en la solicitud",
+            }),
+        };
+    }
+
+
     // convertir a json newtask
     return {
         status: 200,
