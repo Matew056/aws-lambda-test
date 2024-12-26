@@ -19,8 +19,7 @@ const AWS = require('aws-sdk');
 
             return {
                 status: 200,
-                body: JSON.stringify(tasks)
-                    
+                body: tasks
             }
     }
 

@@ -18,7 +18,9 @@ const addTask = async(event) => {
         id,
         title,
         description,
-        createdAt
+        createdAt,
+        done : false,
+        updateCount : 0
     }
 
     // enviar datos
