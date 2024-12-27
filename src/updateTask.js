@@ -35,8 +35,6 @@ const updateTask = async (event) => {
         ReturnValues: 'ALL_NEW'
     }).promise()
 
-   
-
     return {
         status: 200,
         body: JSON.stringify({
