@@ -9,8 +9,8 @@ const updateTask = async (event) => {
     const { done, title, description } = JSON.parse(event.body)
 
     const data = JSON.parse(event.body);
-    // reemplazar esto por un array de atributos
 
+    // reemplazar esto por un array de atributos
     if (!('done' in data) || 
     !('title' in data) || 
     !('description' in data)){

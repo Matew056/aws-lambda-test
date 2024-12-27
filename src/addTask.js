@@ -3,6 +3,10 @@ const { v4 } = require('uuid');
 // importar AWS
 const AWS = require('aws-sdk');
 
+// middlewares
+const middy = require('@middy/core');
+const jsonBodyParser = require('@middy/http-json-body-parser');
+
 // funcion principal
 const addTask = async(event) => {
     // asignar dynamodb
@@ -29,7 +33,7 @@ const addTask = async(event) => {
         Item: newTask
     }).promise()
 
-    //  EXTRA condicion 
+    //  EXTRA, condicion 
     if (!('title' in JSON.parse(event.body)) || !('description' in JSON.parse(event.body))){
         return {
             statusCode: 400,
@@ -39,15 +43,14 @@ const addTask = async(event) => {
         };
     }
 
-
     // convertir a json newtask
     return {
-        status: 200,
+        statusCode: 200,
         body: JSON.stringify(newTask)
     }
 }
 
 // fin 
 module.exports = {
-    addTask,
+    addTask: middy(addTask).use(jsonBodyParser)
 }

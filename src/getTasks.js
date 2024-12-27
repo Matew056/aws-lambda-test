@@ -1,5 +1,6 @@
 const AWS = require('aws-sdk');
 
+// console logs usados para debugear
     const getTasks = async (event) => {
             console.log('initializing function')
 
@@ -7,6 +8,7 @@ const AWS = require('aws-sdk');
 
             console.log('dynamodb loaded')
 
+            //metodo scan devuelve todos los elementos de la tabla
             const result = await dynamodb.scan({
                 TableName: 'TaskTable'
             }).promise()
@@ -23,7 +25,7 @@ const AWS = require('aws-sdk');
             }
     }
 
-console.log('about to export')
+console.log('ready to export')
 
 module.exports = {
     getTasks
